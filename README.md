@@ -48,6 +48,39 @@ TBC
 Any text that is **less than 10px** will usually be flagged up as _too small_ by accessibility checkers.   
 Note that most browsers default to 16px text so if you're working with `em`s, `rem`s or `%`, you need to size accordingly.
 
+### `px` vs `em` vs `rem` vs `%`
++ http://kyleschaeffer.com/development/css-font-size-em-vs-px-vs-pt-vs/   
++ http://www.w3.org/TR/WCAG20-TECHS/C14.html
++ http://stackoverflow.com/questions/17877864/accessibility-and-text-resizing-do-i-still-need-to-use-ems-if-i-no-longer-suppo
+
+### Hiding text (from sighted users but not from screen readers)
+A good example of this is the form `label` property.
+You [have to have `label`s for your form fields](http://www.w3.org/TR/WCAG20-TECHS/H44.html) but sometimes you _don't want your users to see these_ for aesthetic reasons.
+
+**Using `visibility: hidden` or `display: none` hides the content from _all_ users**, including screen readers.
+
+Moving the content off the screen however, solves this problem nicely.
+For example, add `class="sr-only"` to the elements you want to be invisible on your page but still accessible to screen readers and style it thusly:
+```css 
+.sr-only{
+  color: red;
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  border:0;
+  overflow:hidden;
+  clip: rect(0,0,0,0);
+}
+```
+
+
+
+## Styling for Accessibility Checklist
++ [ ] [Text size](#text-size) - Stick with text above 10px
++ [ ] [Hiding text](#hiding-text-from-sighted-users-but-not-from-screen-readers) - Don't use `visibility: hidden` or `display: none` as these also hide text from screen readers
+
 
 ## Further Reading - HTML Accessibility
 [resources to be added here]
